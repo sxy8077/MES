@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//map 映射 用return 来遍历对象输出
+			// let data = [{title: 'title1',price: '15'},
+			//             {title: 'title1',price: '16'},
+			//             {title: 'title1',price: '17'},
+			//             {title: 'title1',price: '18'},
+			//            ]
+			// for(let item in data){
+			// 	console.log('item:',item);
+			// 	console.log("data[item]:",data[item]);
+			// }
+			// /*
+			// 	item: 0
+			// 	data[item]: {title: "title1", price: "15"}
+			// 	item: 1
+			// 	data[item]: {title: "title1", price: "16"}
+			// 	item: 2
+			// 	data[item]: {title: "title1", price: "17"}
+			// 	item: 3
+			// 	data[item]: {title: "title1", price: "18"}
+			// */
+		 // let obj = {
+			//  name: 'jack',
+			//  old: '16',
+			//  sex: 'male',
+		 // }
+		 // for(let item in obj){
+			//  console.log('item:',item);//name old sex
+			//  console.log('obj[item]:',obj[item]);// jack 16 male
+			//  console.log('obj.item:',obj.item);//undefined
+		 // }
+			// let result = data.filter(item=>item.price>16);
+			// console.log("result:",result);/*
+			// 	result:[{title: "title1", price: "17"}1: {title: "title1", price: "18"}]
+			// */
+			// data.forEach(item=>{
+			// 	console.log('item:',item);
+			// });
+			// data.forEach(item=>{
+			// 		if(item.price>16){
+			// 			item.price = "gao";
+			// 		}else{
+			// 			item.price = 'di';
+			// 		}
+			// })	
+			// console.log("data:",data);
+			// let result = data.map((item)=>{
+			//     return (
+			// 			document.write(`<h2>价格：${item.price}</h2>`)
+			// 		);
+			// })
+			// //遍历对象改变原数组
+			// data.map(item=>{
+			// 	if(item.price>16){
+			// 		item.price = "gao";
+			// 	}else{
+			// 		item.price = 'di';
+			// 	}
+			// })
+			// console.log('data:',data);//{title: 'title1',price: 'di'}...
+			// //返回值映射(返回的仍然是数组)
+			// let test = data.map(item=>{
+			// 	return item.price;
+			// })
+			// console.log("test:",test);//test: (4) ["15", "16", "17", "18"]
+			// //返回值加入条件映射
+			// let test1 = data.map(item=>item.price>16?'大于16':'小于16');
+			// console.log("test1:",test1);//test1: (4) ["小于16", "小于16", "大于16", "大于16"]
+			// for(let i =0;i<10;i++){
+			//     console.log(`这是第${i}个:`,i);
+			// }
+		// //通过构造函数来实现‘类’
+		// function User(name,age){
+		//     this.name = name;
+		//     this.age = age;
+		// }
+		// //通过原型的方式构造类方法
+		// User.prototype.showName = function(){
+		//     console.log(this.name);
+		// }
+		// User.prototype.showAge = function(){
+		//     console.log(this.age);
+		// }
+		// User.prototype.showSex = function(sex){
+		// 	console.log('sex:',sex);
+		// }
+		// var user1 = new User('jack',16);
+		// user1.showName();
+		// user1.showAge();
+		// user1.showSex('male');
+			class User{
+					constructor(name,pass){
+							this.name = name;
+							this.pass = pass;
+					}
+					showName(){
+							console.log('name:',this.name);
+					}
+					showPass(){
+							console.log('pass:',this.pass);
+							console.log('this.title1:',this.title1);
+							console.log("this.title2:",this.title2);
+							console.log('this:',this);
+					}
+			}
+			// let user1 = new User('jack','pass');//通过new创建出来的实例对象，this指向新实例本身
+			// var  title1 = 'title-var';
+			// let  title2 = 'title-let';
+			// user1.showName();//name: jack;
+			// user1.showPass();
+			// let  user2 = new User('jack','pass');
+			// user2.showName();//name: jack;
+			// user2.showPass();
+			// console.log(user1 == user2); //false 通过new创建的新的实例对象都是独立的
+			// let obj = {name:'obj',pass: 'obj',title: 'obj'};
+			// user1.showPass.apply(obj);// obj,obj,obj htis指向obj这个对象
+			// user1.showPass.apply(window);//this指向window全局对象，注意let声明的全局变量不在window下面
+			// // var命令和function命令声明的全局变量，依旧是顶层对象的属性；另一方面规定，let命令、const命令、class命令声明的全局变量，
+			// //不属于顶层对象的属性。也就是说，从 ES6 开始，全局变量将逐步与顶层对象的属性脱钩。
+		class VipUser extends User{
+		    constructor(name,pass,level){
+		        super(name,pass);//继承父类的属性
+		        this.level = level;//添加新属性
+		    }
+		    //函数方法写新方法即可，父类方法都已经继承
+		    showLevel(){
+		        console.log("level:",this.level);
+		    }
+		}
+		let v1 = new VipUser('blue','131',3);
+			v1.showName();//blue
+			v1.showPass();//this 指向新的VipUser的对象实例
+			v1.showLevel();//3
+		</script>
+	</body>
+</html>
